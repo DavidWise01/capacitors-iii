@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Capacitors as Communicators · III — Across Time, From the World</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --scope:#0a0f0c;--slate:#0e1512;--panel:#121b17;--grid:#1c2b24;
+    --phos:#6fe6a0;--phos-dim:#3a7a58;--signal:#f0a830;--current:#5fd0e0;
+    --paper:#e8efe9;--paper-dim:#8fa89a;--rule:#1c2b2433;--rose:#e07a9a;
+    --world:#f0846a;          /* Paper III's signature: the world / the warm input */
+    --world-dim:#8a4a3a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{background:var(--scope);color:var(--paper);font-family:'Newsreader',Georgia,serif;
+    font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px}
+
+  .hero{min-height:82vh;display:flex;flex-direction:column;justify-content:center;padding:70px 0 40px}
+  .kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--current);margin-bottom:22px;font-weight:500}
+  .kicker .s{color:var(--phos-dim)}
+  h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(38px,8vw,76px);line-height:.99;letter-spacing:-.03em}
+  h1 .green{color:var(--phos)} h1 .world{color:var(--world)}
+  .lede{font-size:clamp(19px,2.4vw,24px);color:var(--paper-dim);max-width:640px;margin-top:30px;line-height:1.5}
+  .lede b{color:var(--paper);font-weight:500} .lede .amber{color:var(--signal)} .lede .world{color:var(--world)}
+  .reveal{font-family:'IBM Plex Mono',monospace;margin-top:34px;font-size:clamp(17px,3vw,26px);color:var(--phos);letter-spacing:.01em;line-height:1.5}
+  .reveal .v{color:var(--signal)} .reveal .i{color:var(--current)} .reveal .c{color:var(--paper)} .reveal .w{color:var(--world)}
+  .reveal-cap{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--paper-dim);margin-top:12px;line-height:1.6}
+
+  .sec{padding:58px 0;border-top:1px solid var(--rule)}
+  .tag{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--current);margin-bottom:14px;font-weight:500}
+  .tag.w{color:var(--world)}
+  h2{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(26px,4.5vw,38px);line-height:1.05;letter-spacing:-.015em}
+  h2 .green{color:var(--phos)} h2 .world{color:var(--world)}
+  .sec p{margin:18px 0;color:var(--paper);max-width:680px}
+  .sec p.dim{color:var(--paper-dim)}
+  .sec p b{color:var(--paper);font-weight:600}
+  .sec p .amber{color:var(--signal);font-weight:500} .sec p .cyan{color:var(--current);font-weight:500}
+  .sec p .green{color:var(--phos);font-weight:500} .sec p .worldc{color:var(--world);font-weight:500}
+  .pull{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(20px,3vw,27px);line-height:1.35;color:var(--phos);margin:30px 0;padding-left:20px;border-left:3px solid var(--phos-dim)}
+  .pull.world{color:var(--world);border-left-color:var(--world-dim)}
+  code{font-family:'IBM Plex Mono',monospace;font-size:.85em;color:var(--current);background:#0e1512;padding:2px 7px;border-radius:5px}
+  .flag{font-family:'Newsreader';font-size:15.5px;color:var(--paper-dim);font-style:italic;margin:18px 0;padding:14px 18px;background:#0e151266;border:1px solid var(--rule);border-radius:8px}
+  .flag b{color:var(--rose);font-style:normal;font-weight:600;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;display:block;margin-bottom:6px}
+
+  .inst{margin:30px 0;border:1px solid var(--grid);border-radius:14px;overflow:hidden;background:var(--slate)}
+  .inst.world{border-color:#44302a}
+  .inst-bar{display:flex;align-items:center;gap:10px;padding:12px 18px;border-bottom:1px solid var(--grid);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper-dim)}
+  .inst-bar .led{width:9px;height:9px;border-radius:50%;background:var(--phos);box-shadow:0 0 8px var(--phos)}
+  .inst.world .inst-bar .led{background:var(--world);box-shadow:0 0 8px var(--world)}
+  .inst-bar .ttl{color:var(--phos)} .inst.world .inst-bar .ttl{color:var(--world)}
+  canvas{display:block;width:100%;height:auto;background:var(--scope)}
+  .ctrls{padding:16px 18px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;border-top:1px solid var(--grid)}
+  .ctrl{display:flex;flex-direction:column;gap:6px;flex:1;min-width:150px}
+  .ctrl label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--paper-dim)}
+  .ctrl label .val{color:var(--signal);float:right}
+  input[type=range]{-webkit-appearance:none;appearance:none;height:4px;border-radius:2px;background:var(--grid);outline:none;width:100%}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--phos);cursor:pointer;box-shadow:0 0 8px var(--phos-dim)}
+  input[type=range]::-moz-range-thumb{width:18px;height:18px;border:0;border-radius:50%;background:var(--phos);cursor:pointer}
+  input:focus-visible{outline:2px solid var(--phos);outline-offset:3px}
+  .segs{display:flex;gap:6px;flex-wrap:wrap}
+  .seg{font-family:'IBM Plex Mono',monospace;font-size:12px;padding:7px 12px;border:1px solid var(--grid);border-radius:8px;background:var(--panel);color:var(--paper-dim);cursor:pointer;touch-action:manipulation}
+  .seg.on{border-color:var(--phos);color:var(--phos);background:rgba(111,230,160,.1)}
+  .btn{font-family:'IBM Plex Mono',monospace;font-size:12px;padding:9px 16px;border:1px solid var(--world-dim);border-radius:8px;background:rgba(240,132,106,.12);color:var(--world);cursor:pointer;touch-action:manipulation}
+  .btn:active{transform:scale(.97)}
+  .readout{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--paper-dim);padding:0 18px 16px;line-height:1.6}
+  .readout b{color:var(--current)} .readout .amber{color:var(--signal)} .readout .worldc{color:var(--world)} .readout .green{color:var(--phos)}
+
+  .foot{padding:50px 0 80px;border-top:1px solid var(--rule);margin-top:40px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--paper-dim);line-height:2}
+  .foot b{color:var(--phos)}
+  .axes{margin:30px 0;border:1px solid var(--grid);border-radius:12px;overflow:hidden}
+  .axes .row{display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid var(--grid)}
+  .axes .row:last-child{border-bottom:none}
+  .axes .row .p{font-family:'IBM Plex Mono',monospace;font-size:12px;padding:13px 14px;border-right:1px solid var(--grid);display:flex;align-items:center}
+  .axes .row .d{padding:13px 16px;font-size:15px;color:var(--paper-dim)}
+  .axes .row .d b{color:var(--paper)}
+  .p.p1{color:var(--phos)}.p.p2{color:var(--current)}.p.p3{color:var(--world)}
+
+  @media (max-width:560px){body{font-size:17px}.ctrl{min-width:100%}.axes .row{grid-template-columns:92px 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="kicker">Capacitors as Communicators <span class="s">·</span> Paper III — Across Time, From the World</div>
+    <h1>It remembers.<br>It <span class="world">listens</span>.</h1>
+    <p class="lede">Papers I and II moved a signal <b>you</b> supplied — through time was frozen and the world stayed outside. Now the capacitor turns to face both: it stores a value across <span class="amber">time</span> (memory), and it lets the <span class="world">world</span> write straight into its field (sensing). And doing so reveals the half of the law the whole series quietly held still.</p>
+    <div class="reveal"><span class="i">i</span> <span class="c">=</span> <span class="c">C</span>·<span class="c">d</span><span class="v">v</span><span class="c">/dt</span> <span class="c">+</span> <span class="v">V</span>·<span class="c">d</span><span class="w">C</span><span class="c">/dt</span></div>
+    <div class="reveal-cap">the FULL law · Papers I–II used only the first term (C held constant)<br>Paper III is the <span style="color:var(--world)">second term</span> — when the world changes the capacitance itself</div>
+  </header>
+
+  <!-- the reveal -->
+  <section class="sec">
+    <div class="tag">§9 · the half we were hiding</div>
+    <h2>The other term</h2>
+    <p>A confession. Every instrument so far ran on <code>i = C·dv/dt</code> — but that's only true when the capacitance <b>C is constant</b>. The honest, complete current through any capacitor is the rate of change of its <em>charge</em>, <code>Q = C·V</code>, and by the product rule that's two terms:</p>
+    <p class="pull">i = C·<span style="color:var(--signal)">dv/dt</span> &nbsp;+&nbsp; V·<span style="color:var(--world)">dC/dt</span></p>
+    <p>The first term is the whole story when the plates sit still and only the voltage moves — Papers I and II. The <span class="worldc">second term</span> is what happens when the <em>capacitance</em> changes: move a plate, slide a finger near it, let a sound wave press on it. That's not a footnote — it's an entire mode of operation, and it's how a capacitor becomes an <b>ear, a skin, a sensor.</b> The world doesn't change the voltage you apply; it changes the geometry, and <code>dC/dt</code> carries the message in.</p>
+    <p class="dim">So this paper is the cap pointed two new directions: inward across time (hold a charge, fight the leak), and outward at the world (let <code>dC/dt</code> speak). Both were always in the law; the series just hadn't needed them yet.</p>
+  </section>
+
+  <!-- INSTRUMENT 6: SAMPLE & HOLD -->
+  <section class="sec">
+    <div class="tag">§10 · instrument six</div>
+    <h2>Sample &amp; hold — <span class="green">freeze the change</span></h2>
+    <p>The first turn is almost a betrayal of Paper I. There, the capacitor's gift was that it <em>couldn't</em> hold still — it reported only change. Here we use it to do the opposite: catch a moving voltage at one instant and <b>freeze it</b>. Close a switch, the cap charges to the signal's value right now; open the switch, and that value is trapped — held still for the rest of the circuit to read at its leisure. The change-detector becomes a state-keeper, on command.</p>
+
+    <div class="inst">
+      <div class="inst-bar"><span class="led"></span><span class="ttl">SAMPLE &amp; HOLD</span> · grab a value at the clock, hold it still</div>
+      <canvas id="sh"></canvas>
+      <div class="ctrls">
+        <div class="ctrl"><label>sample rate <span class="val" id="shRval">1.0×</span></label>
+          <input type="range" id="shRate" min="0.4" max="3" step="0.05" value="1"></div>
+        <div class="ctrl"><label>hold-cap droop <span class="val" id="shDval">off</span></label>
+          <input type="range" id="shDroop" min="0" max="1" step="0.05" value="0"></div>
+      </div>
+      <div class="readout" id="shRead"><span class="amber">amber</span> = the live signal · <span class="green">green staircase</span> = the held samples · raise the droop and watch each held step slowly sag — because the hold cap leaks too.</div>
+    </div>
+    <p class="dim">This is the bridge from "the channel" to "memory." A held value is a memory one tick long. Make it hold longer and you've built a <em>store</em> — which is the next instrument, and the place the leak stops being a nuisance and becomes the whole drama.</p>
+  </section>
+
+  <!-- INSTRUMENT 7: DRAM CELL -->
+  <section class="sec">
+    <div class="tag">§11 · instrument seven</div>
+    <h2>The DRAM cell — <span class="green">one cap, one bit, and the leak that never quits</span></h2>
+    <p>The most numerous capacitor on Earth is the storage cell in dynamic memory — billions of them in the device you're reading this on. Each one is a single tiny capacitor: <b>charged = 1, empty = 0.</b> Store a bit by dumping charge in; read it by checking if charge is there. A whole memory is just a vast field of these wells.</p>
+    <p>But the ideal capacitor of Papers I and II was a polite fiction. <span class="worldc">Real capacitors leak.</span> The stored charge drains away through imperfect insulation, and within milliseconds a <code>1</code> decays toward the threshold where it can't be told from <code>0</code>. So dynamic memory must <b>refresh</b> — race around reading every cell and rewriting it, thousands of times a second, forever, just to stand still. The "dynamic" in DRAM <em>is</em> the leak.</p>
+
+    <div class="inst">
+      <div class="inst-bar"><span class="led"></span><span class="ttl">THE DRAM CELL</span> · charge = 1 · the leak vs the refresh</div>
+      <canvas id="dram"></canvas>
+      <div class="ctrls">
+        <div class="ctrl"><label>leak rate <span class="val" id="dLval">1.0×</span></label>
+          <input type="range" id="dLeak" min="0.3" max="3" step="0.05" value="1"></div>
+        <div class="ctrl"><label>auto-refresh <span class="val" id="dRval">on</span></label>
+          <input type="range" id="dRefresh" min="0" max="1" step="1" value="1"></div>
+        <div class="ctrl" style="flex:0;min-width:auto;justify-content:flex-end">
+          <button class="btn" id="dWrite">write a 1</button></div>
+      </div>
+      <div class="readout" id="dRead">the well holds charge (a <b>1</b>). watch it leak toward the <span class="worldc">threshold</span>. with refresh ON, it's topped up in time; turn refresh OFF and the bit dies. this race runs in real silicon ~every 64 ms.</div>
+    </div>
+    <p class="pull">The ideal cap would hold the bit forever. The real cap forgets in milliseconds — so memory is not storage, it's a refusal to stop rewriting. The leak we banished is the reason the machine has to keep paying attention.</p>
+    <div class="flag"><b>honest flag</b>Real DRAM cells are ~25 femtofarads and the standard refresh interval is about 64 ms; the timescale here is slowed enormously so you can watch it. The leak is modeled as a clean exponential decay (<code>V = V₀·e^(−t/τ)</code>); real cells vary cell-to-cell, which is why memory has margins, error correction, and refresh to spare. This is also why DRAM loses everything on power-off, and why the leak is a genuine energy cost — billions of cells, refreshed forever.</p>
+  </section>
+
+  <!-- INSTRUMENT 8: THE SENSOR -->
+  <section class="sec">
+    <div class="tag w">§12 · instrument eight · the signature</div>
+    <h2>The sensor — <span class="world">the world writes the field</span></h2>
+    <p>Now the second term, made physical. Until now <em>you</em> moved the voltage. Here the <span class="worldc">world</span> moves the <b>capacitance</b> — and the cap turns that into a signal with no voltage source changing at all. A sound wave presses on one plate of a charged capacitor; the plate moves a few nanometres; the gap changes; <code>C</code> changes; and because the charge is held fixed, the voltage swings: <code>V = Q/C</code>. That's a <b>condenser microphone</b> — the cap is literally an ear. A finger near a plate adds its own capacitance; the change is sensed as a <b>touch</b>. The cap is a skin.</p>
+
+    <div class="inst world">
+      <div class="inst-bar"><span class="led"></span><span class="ttl">THE SENSOR</span> · the world moves a plate · dC/dt becomes the signal</div>
+      <canvas id="sensor"></canvas>
+      <div class="ctrls">
+        <div class="ctrl" style="flex:2;min-width:100%"><label>what's touching it</label>
+          <div class="segs" id="senMode">
+            <div class="seg on" data-m="mic">sound (condenser mic)</div>
+            <div class="seg" data-m="touch">a finger (touch sensor)</div>
+          </div></div>
+        <div class="ctrl"><label id="senLabel">sound level <span class="val" id="senAval">1.0×</span></label>
+          <input type="range" id="senAmp" min="0" max="2" step="0.05" value="1"></div>
+        <div class="ctrl"><label>frequency <span class="val" id="senFval">1.0×</span></label>
+          <input type="range" id="senFreq" min="0.4" max="3" step="0.05" value="1"></div>
+      </div>
+      <div class="readout" id="senRead"><span class="worldc">the world (left)</span> presses the plate · the gap changes · <span class="green">C changes</span> · the held charge turns that into an <span class="amber">output voltage</span> on the right. no source voltage moved — the world wrote the signal.</div>
+    </div>
+    <p class="pull world">You never touched the voltage. The world changed the capacitance, and the cap turned the world into a signal. That is the second term of the law — and it is how a passive part becomes a sense.</p>
+    <div class="flag"><b>honest flag</b>Shown is the electret/condenser principle (fixed charge, moving plate → voltage). Real mics add a high-impedance preamp because the cap's signal is tiny and easily loaded down; real touchscreens usually measure charge-transfer time, not raw voltage, and scan a grid. The physics — <code>the world changes C, and V·dC/dt carries it in</code> — is exact; the front-end electronics around it are the engineering this paper doesn't draw.</p>
+  </section>
+
+  <!-- CLOSE -->
+  <section class="sec">
+    <div class="tag">§13 · the whole communicator</div>
+    <h2>Three axes, <span class="green">one part</span></h2>
+    <p>Across three papers the same passive component spoke in three directions — and it never stopped being a change-detector. It just kept finding new things whose change it could report.</p>
+
+    <div class="axes">
+      <div class="row"><div class="p p1">PAPER I</div><div class="d"><b>the difference</b> — change in voltage becomes current. <code>i = C·dv/dt</code>. the seed.</div></div>
+      <div class="row"><div class="p p2">PAPER II</div><div class="d"><b>across space</b> — carry a signal, filter it, leap a gap with no wire. displacement current.</div></div>
+      <div class="row"><div class="p p3">PAPER III</div><div class="d"><b>across time &amp; from the world</b> — hold a value, store a bit against the leak, and let the world write the field. the <code>V·dC/dt</code> term.</div></div>
+    </div>
+
+    <p>The full law, <code>i = C·dv/dt + V·dC/dt</code>, was always the whole capacitor. The first term moves the signals we make; the second lets the world speak. A capacitor was never a bucket for charge — it was an instrument for noticing that something changed, wherever the change came from: the wire, the gap, the clock, or the air against a plate.</p>
+    <p class="pull">A capacitor cannot hear what holds still — so it spent three papers finding every kind of thing that moves, and reporting each one. That is the whole of what it is to communicate.</p>
+
+    <p class="dim">If the series goes on: the cap as <em>power</em> (decoupling, the reservoir that answers a sudden demand — change in current this time), or the deep non-idealities (dielectric absorption, the "memory effect" where a cap half-remembers its last charge — a ghost of state in a change-detector), or the quantum end (the transmon's shunt capacitor, where this same part sets a qubit's frequency — which, it turns out, you already have a whole sphere on).</p>
+  </section>
+
+  <div class="foot">
+    CAPACITORS AS COMMUNICATORS · PAPER III — ACROSS TIME, FROM THE WORLD<br>
+    the full law: <b>i = C·dv/dt + V·dC/dt</b> · the second term is the world changing C<br>
+    DRAM leak → threshold at ~62 ms → refresh ~64 ms · condenser mic = fixed Q, moving plate · checked in node<br>
+    three papers, three axes, one part that only ever reports a change
+  </div>
+
+</div>
+
+<script>
+"use strict";
+const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const COL={scope:"#0a0f0c",grid:"#1c2b24",phos:"#6fe6a0",phosDim:"#3a7a58",
+  signal:"#f0a830",current:"#5fd0e0",paper:"#8fa89a",world:"#f0846a",worldDim:"#8a4a3a"};
+
+function setup(cv,ratio){
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  const cssW=cv.parentElement.clientWidth, cssH=Math.round(cssW*ratio);
+  cv.width=cssW*dpr; cv.height=cssH*dpr; cv.style.height=cssH+"px";
+  const ctx=cv.getContext("2d"); ctx.setTransform(dpr,0,0,dpr,0,0);
+  return {ctx,W:cssW,H:cssH};
+}
+function gridlines(ctx,W,H){ ctx.strokeStyle=COL.grid;ctx.lineWidth=1;
+  for(let x=0;x<=W;x+=W/12){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+  for(let y=0;y<=H;y+=H/8){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();} }
+function glow(ctx,pts,gx,gy,color,gw){ ctx.shadowColor=color;ctx.shadowBlur=gw||8;
+  ctx.strokeStyle=color;ctx.lineWidth=2;ctx.beginPath();
+  pts.forEach((o,k)=>{const x=gx(o,k),y=gy(o,k);k?ctx.lineTo(x,y):ctx.moveTo(x,y);});
+  ctx.stroke();ctx.shadowBlur=0; }
+
+/* ── (6) SAMPLE & HOLD ── */
+(function(){
+  const cv=document.getElementById("sh");
+  const R=document.getElementById("shRate"),D=document.getElementById("shDroop");
+  const Rv=document.getElementById("shRval"),Dv=document.getElementById("shDval");
+  let d=setup(cv,0.52); window.addEventListener("resize",()=>d=setup(cv,0.52));
+  function draw(t){
+    const {ctx,W,H}=d; const rate=parseFloat(R.value),droop=parseFloat(D.value);
+    Rv.textContent=rate.toFixed(1)+"×"; Dv.textContent=droop<0.02?"off":droop.toFixed(2)+"×";
+    ctx.clearRect(0,0,W,H); gridlines(ctx,W,H);
+    const padL=40,padR=12,plotW=W-padL-padR, mid=H*0.5, amp=H*0.32;
+    ctx.strokeStyle="#2a3b32";ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(padL,mid);ctx.lineTo(W-padR,mid);ctx.stroke();
+    const scroll=reduce?0:(t*0.1)%1, N=300;
+    const sig=p=>Math.sin(p*Math.PI*2*1.5)*0.7+Math.sin(p*Math.PI*2*0.5)*0.3;
+    // live signal
+    const live=[];for(let k=0;k<=N;k++){const p=(k/N+scroll); live.push({x:padL+plotW*(k/N),y:mid-sig(p)*amp});}
+    glow(ctx,live,o=>o.x,o=>o.y,COL.signal,6);
+    // sample/hold staircase
+    const nS=Math.round(10*rate); const held=[];
+    for(let s=0;s<=nS;s++){
+      const frac=s/nS; const p=(frac+scroll);
+      const sampleP=Math.floor((p)* nS)/nS; // step
+      const v=sig(sampleP);
+      const x0=padL+plotW*frac;
+      held.push({x:x0,v});
+    }
+    ctx.strokeStyle=COL.phos;ctx.shadowColor=COL.phos;ctx.shadowBlur=6;ctx.lineWidth=2;ctx.beginPath();
+    for(let k=0;k<held.length;k++){
+      const o=held[k];
+      // droop: each held step sags a little toward zero over its width
+      const sag = droop*0.18*Math.sin((k%2)*0+ (t*2)%1*0+0)+0; // base
+      const y=mid-(o.v - droop*0.12)*amp;
+      if(k===0)ctx.moveTo(o.x,y); else {ctx.lineTo(o.x,held[k-1]._y!==undefined?held[k-1]._y:y);ctx.lineTo(o.x,y);}
+      o._y=y;
+    }
+    ctx.stroke();ctx.shadowBlur=0;
+    // sample dots
+    held.forEach(o=>{ctx.fillStyle=COL.phos;ctx.beginPath();ctx.arc(o.x,o._y,2.5,0,Math.PI*2);ctx.fill();});
+    // legend
+    ctx.font="11px 'IBM Plex Mono',monospace";ctx.textAlign="right";
+    ctx.fillStyle=COL.signal;ctx.fillText("live signal",W-padR,14);
+    ctx.fillStyle=COL.phos;ctx.fillText("held samples",W-padR,30);
+    requestAnimationFrame(draw);
+  } requestAnimationFrame(draw);
+})();
+
+/* ── (7) DRAM CELL ── */
+(function(){
+  const cv=document.getElementById("dram");
+  const L=document.getElementById("dLeak"),Rf=document.getElementById("dRefresh");
+  const Lv=document.getElementById("dLval"),Rv=document.getElementById("dRval");
+  const wbtn=document.getElementById("dWrite"),read=document.getElementById("dRead");
+  let d=setup(cv,0.5); window.addEventListener("resize",()=>d=setup(cv,0.5));
+  let charge=1.0, last=performance.now(), history=[], refreshFlash=0;
+  const THRESH=0.5;
+  wbtn.onclick=()=>{charge=1.0;};
+  function draw(now){
+    const {ctx,W,H}=d; const leak=parseFloat(L.value), refreshOn=parseFloat(Rf.value)>0.5;
+    Lv.textContent=leak.toFixed(1)+"×"; Rv.textContent=refreshOn?"on":"off";
+    const dt=Math.min(0.05,(now-last)/1000); last=now;
+    // exponential leak
+    if(!reduce) charge *= Math.exp(-dt*leak*0.5);
+    // refresh: when charge dips near threshold (and above 0), top up
+    if(refreshOn && charge>THRESH*0.9 && charge<THRESH+0.12){ charge=1.0; refreshFlash=1; }
+    if(refreshOn && charge<=THRESH*0.9 && charge>0.05){ charge=1.0; refreshFlash=1; } // catch
+    refreshFlash*=0.92;
+    history.push(charge); if(history.length>200)history.shift();
+
+    ctx.clearRect(0,0,W,H); gridlines(ctx,W,H);
+    // left: the charge well (a capacitor filling/draining)
+    const wellX=W*0.16, wellW=W*0.16, wellTop=H*0.18, wellH=H*0.62;
+    ctx.strokeStyle="#3a4d43";ctx.lineWidth=2;ctx.strokeRect(wellX,wellTop,wellW,wellH);
+    // fill
+    const fillH=wellH*Math.max(0,Math.min(1,charge));
+    const grd=ctx.createLinearGradient(0,wellTop+wellH-fillH,0,wellTop+wellH);
+    const c = charge>THRESH? COL.phos : COL.world;
+    grd.addColorStop(0,c); grd.addColorStop(1,c+"66");
+    ctx.fillStyle=grd; ctx.fillRect(wellX+2,wellTop+wellH-fillH,wellW-4,fillH);
+    if(refreshFlash>0.05){ ctx.fillStyle=`rgba(111,230,160,${refreshFlash*0.4})`; ctx.fillRect(wellX,wellTop,wellW,wellH); }
+    // threshold line
+    const ty=wellTop+wellH*(1-THRESH);
+    ctx.setLineDash([4,4]);ctx.strokeStyle=COL.world;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(wellX-6,ty);ctx.lineTo(wellX+wellW+6,ty);ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle=COL.world;ctx.font="10px 'IBM Plex Mono',monospace";ctx.textAlign="left";ctx.fillText("threshold",wellX+wellW+10,ty);
+    // bit label
+    ctx.font="bold 15px 'IBM Plex Mono',monospace";ctx.textAlign="center";
+    ctx.fillStyle = charge>THRESH? COL.phos:COL.world;
+    ctx.fillText(charge>THRESH?"reads 1":"reads 0", wellX+wellW/2, wellTop-10);
+    ctx.fillStyle=COL.paper;ctx.font="10px 'IBM Plex Mono',monospace";ctx.fillText("1 cap = 1 bit", wellX+wellW/2, wellTop+wellH+18);
+
+    // right: the decay trace over time
+    const tx=W*0.46, tw=W*0.48, tyTop=H*0.16, th=H*0.66;
+    ctx.strokeStyle="#2a3b32";ctx.lineWidth=1;ctx.strokeRect(tx,tyTop,tw,th);
+    // threshold on trace
+    ctx.setLineDash([3,4]);ctx.strokeStyle=COL.worldDim;ctx.beginPath();ctx.moveTo(tx,tyTop+th*(1-THRESH));ctx.lineTo(tx+tw,tyTop+th*(1-THRESH));ctx.stroke();ctx.setLineDash([]);
+    ctx.strokeStyle=COL.phos;ctx.shadowColor=COL.phos;ctx.shadowBlur=6;ctx.lineWidth=2;ctx.beginPath();
+    history.forEach((v,k)=>{const x=tx+tw*(k/200);const y=tyTop+th*(1-Math.max(0,Math.min(1,v)));k?ctx.lineTo(x,y):ctx.moveTo(x,y);});
+    ctx.stroke();ctx.shadowBlur=0;
+    ctx.fillStyle=COL.paper;ctx.font="10px 'IBM Plex Mono',monospace";ctx.textAlign="left";ctx.fillText("charge over time →",tx+4,tyTop-4);
+
+    read.innerHTML = refreshOn
+      ? `charge <b>${(charge*100).toFixed(0)}%</b> · refresh ON — the cell is topped up before it crosses the <span class="worldc">threshold</span>. the bit survives, but only by constant rewriting.`
+      : `charge <b>${(charge*100).toFixed(0)}%</b> · refresh OFF — watch it leak past the <span class="worldc">threshold</span> and the <b>1</b> become a <b>0</b>. press “write a 1” to reload. this is forgetting, live.`;
+    requestAnimationFrame(draw);
+  } requestAnimationFrame(draw);
+})();
+
+/* ── (8) THE SENSOR ── */
+(function(){
+  const cv=document.getElementById("sensor");
+  const A=document.getElementById("senAmp"),F=document.getElementById("senFreq");
+  const Av=document.getElementById("senAval"),Fv=document.getElementById("senFval");
+  const seg=document.getElementById("senMode"),read=document.getElementById("senRead"),lbl=document.getElementById("senLabel");
+  let mode="mic";
+  seg.querySelectorAll(".seg").forEach(s=>s.onclick=()=>{mode=s.dataset.m;seg.querySelectorAll(".seg").forEach(o=>o.classList.toggle("on",o===s));
+    lbl.childNodes[0].nodeValue = mode==="mic"?"sound level ":"touch strength ";});
+  let d=setup(cv,0.58); window.addEventListener("resize",()=>d=setup(cv,0.58));
+  let outHist=[];
+  function draw(t){
+    const {ctx,W,H}=d; const amp=parseFloat(A.value),freq=parseFloat(F.value);
+    Av.textContent=amp.toFixed(1)+"×"; Fv.textContent=freq.toFixed(1)+"×";
+    ctx.clearRect(0,0,W,H); gridlines(ctx,W,H);
+
+    const cy=H*0.40, plateH=H*0.40, plateW=11;
+    const cx=W*0.30, baseGap=W*0.07;
+    const tt=reduce?0.5:t;
+    // the world's action moves the LEFT plate (changing the gap → C)
+    let disp; // plate displacement (0..1 fraction of gap)
+    if(mode==="mic"){ disp = amp*0.45*Math.sin(tt*2*freq); }     // sound oscillates the plate
+    else { disp = amp*0.42*(0.5+0.5*Math.sin(tt*0.6)); }          // a finger approaches/holds
+    const gap = baseGap*(1 - disp*0.6);
+    const lx=cx-gap, rx=cx+gap;
+
+    // the "world" actor on the left (sound waves or a finger)
+    if(mode==="mic"){
+      // concentric sound arcs pushing from the left
+      for(let i=0;i<4;i++){
+        const rr=(tt*60*freq + i*22)% 88;
+        ctx.strokeStyle=`rgba(240,132,106,${0.5*(1-rr/88)*amp})`;ctx.lineWidth=2;
+        ctx.beginPath();ctx.arc(lx-46,cy,rr,-0.9,0.9);ctx.stroke();
+      }
+      ctx.fillStyle=COL.world;ctx.font="10px 'IBM Plex Mono',monospace";ctx.textAlign="center";ctx.fillText("sound",lx-52,cy+plateH/2+14);
+    } else {
+      // a finger
+      const fx=lx-30-(1-disp)*10;
+      ctx.fillStyle=`rgba(240,132,106,${0.55+0.3*disp})`;
+      ctx.beginPath();ctx.ellipse(fx,cy,16,26,0,0,Math.PI*2);ctx.fill();
+      ctx.fillStyle=COL.world;ctx.font="10px 'IBM Plex Mono',monospace";ctx.textAlign="center";ctx.fillText("finger",fx,cy+plateH/2+14);
+    }
+
+    // field lines in the gap (density ∝ 1/gap = C)
+    const Cnow = baseGap/gap; // ∝ 1/gap
+    const nF=Math.round(4+Cnow*3);
+    for(let i=0;i<nF;i++){
+      const fy=cy-plateH/2+(plateH/nF)*(i+0.5);
+      ctx.strokeStyle=`rgba(111,230,160,${0.25+0.3*Cnow*0.3})`;ctx.lineWidth=1.3;
+      ctx.beginPath();ctx.moveTo(lx+plateW/2,fy);ctx.lineTo(rx-plateW/2,fy);ctx.stroke();
+    }
+    // plates
+    function plate(x,label,col){ ctx.fillStyle="#2a3b32";ctx.fillRect(x-plateW/2,cy-plateH/2,plateW,plateH);
+      ctx.strokeStyle=col;ctx.lineWidth=2;ctx.strokeRect(x-plateW/2,cy-plateH/2,plateW,plateH);
+      ctx.fillStyle=col;ctx.font="10px 'IBM Plex Mono',monospace";ctx.textAlign="center";ctx.fillText(label,x,cy-plateH/2-9);}
+    plate(lx,"MOVES",COL.world); plate(rx,"FIXED",COL.phos);
+    // fixed-charge note
+    ctx.fillStyle="#5a6e62";ctx.font="9px 'IBM Plex Mono',monospace";ctx.textAlign="center";
+    ctx.fillText("Q held fixed → V = Q/C", cx, cy+plateH/2+30);
+
+    // output voltage trace on the right: V ∝ 1/C ∝ gap  → V tracks the plate motion
+    const sx=W*0.62, sw=W*0.33, sh=H*0.66, sy=H*0.14;
+    ctx.strokeStyle="#2a3b32";ctx.lineWidth=1;ctx.strokeRect(sx,sy,sw,sh);
+    ctx.fillStyle=COL.signal;ctx.font="10px 'IBM Plex Mono',monospace";ctx.textAlign="left";ctx.fillText("output V = Q/C",sx+6,sy+12);
+    const Vout = (gap/baseGap - 0.7); // ∝ gap (since V=Qd/εA ∝ d)
+    outHist.push(Vout); if(outHist.length>140)outHist.shift();
+    const mid=sy+sh*0.5, av=sh*0.34;
+    ctx.strokeStyle=COL.signal;ctx.shadowColor=COL.signal;ctx.shadowBlur=6;ctx.lineWidth=2;ctx.beginPath();
+    outHist.forEach((v,k)=>{const x=sx+sw*(k/140);const y=mid-v*av*2;k?ctx.lineTo(x,y):ctx.moveTo(x,y);});
+    ctx.stroke();ctx.shadowBlur=0;
+
+    read.innerHTML = mode==="mic"
+      ? `<span class="worldc">sound</span> oscillates the moving plate → the gap (and <span class="green">C</span>) wobbles → with charge held fixed, the <span class="amber">output voltage</span> wobbles in step. that's a microphone. <b>no source voltage moved.</b>`
+      : `a <span class="worldc">finger</span> changes the plate's field → <span class="green">C</span> shifts → the <span class="amber">output</span> moves. detected as a touch. the world wrote the signal by changing capacitance, not voltage.`;
+    requestAnimationFrame(draw);
+  } requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
